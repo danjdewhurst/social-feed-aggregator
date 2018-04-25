@@ -1,0 +1,11 @@
+<?php
+
+function social_feed_aggregator_update_8301(&$sandbox) {
+  $config = \Drupal::configFactory()->getEditable('social_feed_aggregator.settings');
+
+  dump($config->get('facebook_username'));
+
+  exit;
+
+  return t('Single accounts migrated to multi accounts.');
+}
