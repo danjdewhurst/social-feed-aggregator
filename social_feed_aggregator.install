@@ -1,11 +1,65 @@
 <?php
 
+/**
+ * Update from single to multiple accounts.
+ */
 function social_feed_aggregator_update_8301(&$sandbox) {
   $config = \Drupal::configFactory()->getEditable('social_feed_aggregator.settings');
 
-  dump($config->get('facebook_username'));
+  /**
+   * Facebook.
+   */
+  if(!is_null($config->get('facebook.enabled'))) {
+    $config->set('facebook.0.enabled', $config->get('facebook.enabled'));
+  }
 
-  exit;
+  if(!is_null($config->get('facebook.app_id'))) {
+    $config->set('facebook.0.app_id', $config->get('facebook.app_id'));
+  }
+
+  if(!is_null($config->get('facebook.app_secret'))) {
+    $config->set('facebook.0.app_secret', $config->get('facebook.app_secret'));
+  }
+
+  /**
+   * Twitter.
+   */
+  if(!is_null($config->get('twitter.enabled'))) {
+    $config->set('twitter.0.enabled', $config->get('twitter.enabled'));
+  }
+
+  if(!is_null($config->get('twitter.consumer_key'))) {
+    $config->set('twitter.0.consumer_key', $config->get('twitter.consumer_key'));
+  }
+
+  if(!is_null($config->get('twitter.consumer_secret'))) {
+    $config->set('twitter.0.consumer_secret', $config->get('twitter.consumer_secret'));
+  }
+
+  if(!is_null($config->get('twitter.access_token'))) {
+    $config->set('twitter.0.access_token', $config->get('twitter.access_token'));
+  }
+
+  if(!is_null($config->get('twitter.access_token_secret'))) {
+    $config->set('twitter.0.access_token_secret', $config->get('twitter.access_token_secret'));
+  }
+
+  /**
+   * Instagram.
+   */
+  if(!is_null($config->get('instagram.enabled'))) {
+    $config->set('instagram.0.enabled', $config->get('instagram.enabled'));
+  }
+
+  if(!is_null($config->get('instagram.client_id'))) {
+    $config->set('instagram.0.client_id', $config->get('instagram.client_id'));
+  }
+
+  if(!is_null($config->get('instagram.access_token'))) {
+    $config->set('instagram.0.access_token', $config->get('instagram.access_token'));
+  }
+
+  $config->save();
 
   return t('Single accounts migrated to multi accounts.');
 }
