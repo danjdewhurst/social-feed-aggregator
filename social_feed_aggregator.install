@@ -13,6 +13,10 @@ function social_feed_aggregator_update_8301(&$sandbox) {
     $config->set('facebook.0.enabled', $config->get('facebook.enabled'));
   }
 
+  if(!is_null($config->get('facebook.username'))) {
+    $config->set('facebook.0.username', $config->get('facebook.username'));
+  }
+
   if(!is_null($config->get('facebook.app_id'))) {
     $config->set('facebook.0.app_id', $config->get('facebook.app_id'));
   }
@@ -26,6 +30,10 @@ function social_feed_aggregator_update_8301(&$sandbox) {
    */
   if(!is_null($config->get('twitter.enabled'))) {
     $config->set('twitter.0.enabled', $config->get('twitter.enabled'));
+  }
+
+  if(!is_null($config->get('twitter.username'))) {
+    $config->set('twitter.0.username', $config->get('twitter.username'));
   }
 
   if(!is_null($config->get('twitter.consumer_key'))) {
@@ -49,6 +57,10 @@ function social_feed_aggregator_update_8301(&$sandbox) {
    */
   if(!is_null($config->get('instagram.enabled'))) {
     $config->set('instagram.0.enabled', $config->get('instagram.enabled'));
+  }
+
+  if(!is_null($config->get('instagram.username'))) {
+    $config->set('instagram.0.username', $config->get('instagram.username'));
   }
 
   if(!is_null($config->get('instagram.client_id'))) {
